@@ -1,26 +1,42 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 internal class Program
 {
     private static async Task Main(string[] args)
     {
+        ThreadPool.QueueUserWorkItem(async state =>
+        {
+            await CreateFile(1);
+        });
 
-        Task file1Task = createFile(1);
-        Task file2Task = createFile(2);
-        await Task.WhenAll(file1Task, file2Task);
+        ThreadPool.QueueUserWorkItem(async state =>
+        {
+            await CreateFile(2);
+        });
 
-        Task readFile1Task = ReadFile(1);
-        Task readFile2Task = ReadFile(2);
-        await Task.WhenAll(readFile1Task, readFile2Task);
+        await Task.Delay(1000); 
+
+        ThreadPool.QueueUserWorkItem(async state =>
+        {
+            await ReadFile(1);
+        });
+
+        ThreadPool.QueueUserWorkItem(async state =>
+        {
+            await ReadFile(2);
+        });
+
+        await Task.Delay(1000);
 
         Console.WriteLine("Les deux fichiers sont bien lus.");
         Console.WriteLine("Continuation du traitement");
     }
 
-    private static async Task createFile(int a)
+    private static async Task CreateFile(int a)
     {
         Console.WriteLine($"Début de l'écriture du fichier {a}");
         using (StreamWriter sw = File.CreateText($@"..\Async\test{a}.txt"))
@@ -57,7 +73,6 @@ internal class Program
             if (c == '2')
             {
                 Console.WriteLine(text);
-
             }
         }
     }
