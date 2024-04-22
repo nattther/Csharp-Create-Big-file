@@ -23,9 +23,9 @@ internal class Program
     private static async Task createFile(int a)
     {
         Console.WriteLine($"Début de l'écriture du fichier {a}");
-        using (StreamWriter sw = File.CreateText($@"C:\Users\Nathan-Efficom\Desktop\cours\algo\Async\test{a}.txt"))
+        using (StreamWriter sw = File.CreateText($@"..\Async\test{a}.txt"))
         {
-            for (int i = 0; i < 99000; i++)
+            for (int i = 0; i < 900; i++)
             {
                 await sw.WriteLineAsync($"Line {i}");
             }
@@ -36,7 +36,7 @@ internal class Program
     private static async Task ReadFile(int a)
     {
         Console.WriteLine($"Début de lecture du fichier {a}");
-        using (FileStream fsSource = new FileStream($@"C:\Users\Nathan-Efficom\Desktop\cours\algo\Async\test{a}.txt", FileMode.Open, FileAccess.Read))
+        using (FileStream fsSource = new FileStream($@"..\Async\test{a}.txt", FileMode.Open, FileAccess.Read))
         {
             using (StreamReader reader = new StreamReader(fsSource, Encoding.UTF8))
             {
