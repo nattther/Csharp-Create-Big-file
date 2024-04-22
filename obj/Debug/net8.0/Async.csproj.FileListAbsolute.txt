@@ -12,3 +12,4 @@ C:\Users\Nathan-Efficom\Desktop\cours\algo\Async\obj\Debug\net8.0\refint\Async.d
 C:\Users\Nathan-Efficom\Desktop\cours\algo\Async\obj\Debug\net8.0\Async.pdb
 C:\Users\Nathan-Efficom\Desktop\cours\algo\Async\obj\Debug\net8.0\Async.genruntimeconfig.cache
 C:\Users\Nathan-Efficom\Desktop\cours\algo\Async\obj\Debug\net8.0\ref\Async.dll
+C:\Users\Nathan-Efficom\Desktop\cours\algo\Async\obj\Debug\net8.0\Async.sourcelink.json
